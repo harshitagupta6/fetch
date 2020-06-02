@@ -3287,7 +3287,7 @@ a <a for=/>response</a> <var>response</var>, run these steps:</p>
   <p>If the <a>cross-origin resource policy internal check</a> with "<code>unsafe-none</code>",
   <var>request</var> and <var>response</var> returns <b>blocked</b>, then return <b>blocked</b>.
 
-  <p class="note no-backref">This is to queue only COEP related violation reports.
+  <p class="note">This is to queue only COEP-related violation reports.
 
  <li><p>If the <a>cross-origin resource policy internal check</a> with <var>embedder policy</var>'s
  report only value, <var>request</var> and <var>response</var> returns <b>blocked</b>, then
