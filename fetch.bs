@@ -3177,7 +3177,7 @@ a <a for=/>response</a> <var>response</var>, run these steps:</p>
   <p>If <var>request</var>'s <a for=request>mode</a> is "<code>navigate</code>":
 
   <p class="note no-backref">Only HTML's navigate algorithm uses this check for the
-  "<code>navigate</code>" <a for=request>mode</a>, for nested navigations. [[!HTML]]
+  "<code>navigate</code>" <a for=request>mode</a>, for nested navigations. [[HTML]]
 
   <ol>
    <li>
