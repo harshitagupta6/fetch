@@ -3165,9 +3165,9 @@ response <a for=/>header</a> can be used to require checking a <a for=/>request<
 Cross-Origin-Resource-Policy     = %s"same-origin" / %s"same-site" / %s"cross-origin" ; case-sensitive
 </code></pre>
 
-<p>To perform a <dfn>cross-origin resource policy internal check</dfn>, given a string
-<var>embedder policy value</var>, a <a for=/>request</a> <var>request</var> and
-a <a for=/>response</a> <var>response</var>, run these steps:</p>
+<p>To perform a <dfn>cross-origin resource policy internal check</dfn>, given an
+embedder policy value <var>embedder policy value</var>, a <a for=/>request</a>
+<var>request</var> and a <a for=/>response</a> <var>response</var>, run these steps:</p>
 
 <ol>
  <li><p>Assert: <var>request</var>'s <a for=request>mode</a> is "<code>navigate</code>" or
@@ -3199,6 +3199,9 @@ a <a for=/>response</a> <var>response</var>, run these steps:</p>
   ends up as <b>allowed</b> below as it will never match anything, as long as
   <var>embedder policy value</var> is "<code>unsafe-none</code>". Two or more
   `<a http-header><code>Cross-Origin-Resource-Policy</code></a>` headers will have the same effect.
+
+ <li><p>If <var>policy</var> is neither "<code>same-origin</code>", "<code>same-site</code>" nor
+ "<code>cross-origin</code>", then set <var>policy</var> to null.
 
  <li><p>If <var>policy</var> is null and <var>embedder policy value</var> is
  "<code>require-corp</code>", then set <var>policy</var> to "<code>same-origin</code>".
@@ -3277,7 +3280,7 @@ a <a for=/>response</a> <var>response</var>, run these steps:</p>
 </ol>
 
 
-<p>To perform a <dfn>cross-origin resource policy check</dfn>, given a <a for=/>request</a>
+<p>To perform a <dfn export>cross-origin resource policy check</dfn>, given a <a for=/>request</a>
 <var>request</var> and a <a for=/>response</a> <var>response</var>, run these steps:</p>
 <ol>
  <li><p>Let <var>embedder policy</var> be <var>request</var>'s <a for=request>client</a>'s
