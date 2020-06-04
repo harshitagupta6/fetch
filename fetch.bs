@@ -1749,29 +1749,8 @@ source of security bugs. Please seek security review for features that deal with
 
 <hr>
 
-<p>To <dfn export>serialize a request URL for reporting</dfn>, given a <a for=/>request</a>
-<var>request</var>, run these steps:
-
-<ol>
- <li>
-  <p>Let <var>url</var> be a copy of <var>request</var>'s <a for=request>URL</a>.
-
-  <p class="note">This is not <var>request</var>'s <a for=request>current URL</a> in order to avoid
-  leaking information about redirect targets (see
-  <a href="https://w3c.github.io/webappsec-csp/#security-violation-reports">similar considerations for CSP reporting</a>
-  too). [[CSP]]
-
- <li><p><a>Set the username</a> given <var>url</var> and the empty string.
-
- <li><p><a>Set the password</a> given <var>url</var> and the empty string.
-
- <li><p>Return the <a lt="url serializer">serialization</a> of <var>url</var> with the
- <i>exclude fragment flag</i> set.
-</ol>
-
-
-<p>To <dfn export for=request id=concept-request-serialize-url-for-reporting>serialize a response
-URL for reporting</dfn>, given a <a for=/>response</a> <var>response</var>, run these steps:
+<p>To <dfn export>serialize a response URL for reporting</dfn>, given a <a for=/>response</a>
+<var>response</var>, run these steps:
 
 <ol>
  <li><p>Assert: <var>response</var>'s <a for=response>URL list</a> is not empty.
