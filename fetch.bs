@@ -1761,16 +1761,17 @@ source of security bugs. Please seek security review for features that deal with
 
   <p class="note">This is not <var>response</var>'s <a for=response>URL</a> in order to avoid
   leaking information about redirect targets (see
-  <a href="https://w3c.github.io/webappsec-csp/#security-violation-reports">similar considerations
-  for CSP reporting</a> too).
+  <a href="https://w3c.github.io/webappsec-csp/#security-violation-reports">similar considerations for CSP reporting</a>
+  too). [[CSP]]
 
  <li><p><a>Set the username</a> given <var>url</var> and the empty string.
 
  <li><p><a>Set the password</a> given <var>url</var> and the empty string.
 
- <li><p>Return <var>url</var> <a lt="url serializer">serialized</a>with the
+ <li><p>Return the <a lt="url serializer">serialization</a> of <var>url</var> with the
  <i>exclude fragment flag</i> set.
 </ol>
+
 
 <h4 id=responses>Responses</h4>
 
