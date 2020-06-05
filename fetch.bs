@@ -3150,7 +3150,7 @@ Cross-Origin-Resource-Policy     = %s"same-origin" / %s"same-site" / %s"cross-or
 
 <p>To perform a <dfn>cross-origin resource policy internal check</dfn>, given a
 <a for=/>response</a> <var>response</var>, an <a for=url>origin</a>, <var>origin</var>, an
-embedder policy value <var>embedderPolicyValue</var> and a boolean
+embedder policy value <var>embedderPolicyValue</var>, and a boolean
 <var>forNavigation</var>, run these steps:
 
 <ol>
@@ -3167,7 +3167,7 @@ embedder policy value <var>embedderPolicyValue</var> and a boolean
   <var>embedderPolicyValue</var> is "<code>unsafe-none</code>". Two or more
   `<a http-header><code>Cross-Origin-Resource-Policy</code></a>` headers will have the same effect.
 
- <li><p>If <var>policy</var> is none of `<code>same-origin</code>`, `<code>same-site</code>` or
+ <li><p>If <var>policy</var> is none of `<code>same-origin</code>`, `<code>same-site</code>`, or
  `<code>cross-origin</code>`, then set <var>policy</var> to null.
 
  <li><p>If <var>policy</var> is null and <var>embedderPolicyValue</var> is
@@ -3213,7 +3213,7 @@ embedder policy value <var>embedderPolicyValue</var> and a boolean
 
 <p>To <dfn>queue a cross-origin embedder policy CORP violation report</dfn>, given a
 <a for=/>response</a> <var>response</var>, an <a for=/>environment settings object</a>
-<var>settingsObject</var> and a <i>report only flag</i>, run these steps:
+<var>settingsObject</var>, and a <i>report only flag</i>, run these steps:
 
 <ol>
  <li><p>Let <var>endpoint</var> be <var>settingsObject</var>'s embedder policy's
@@ -3268,18 +3268,18 @@ a <a for=/>response</a> which will be the <a for=internal>internal response</a> 
 
  <li>
   <p>If the <a>cross-origin resource policy internal check</a> with <var>response</var>,
-  <var>origin</var> and "<code>unsafe-none</code>" and <var>forNavigation</var> returns
+  <var>origin</var> and "<code>unsafe-none</code>", and <var>forNavigation</var> returns
   <b>blocked</b>, then return <b>blocked</b>.
 
   <p class="note">This is to queue only COEP-related violation reports.
 
  <li><p>If the <a>cross-origin resource policy internal check</a> with <var>response</var>,
- <var>origin</var>, <var>embedderPolicy</var>'s report only value and <var>forNavigation</var>
+ <var>origin</var>, <var>embedderPolicy</var>'s report only value, and <var>forNavigation</var>
  returns <b>blocked</b>, then <a>queue a cross-origin embedder policy CORP violation report</a>
  with <var>response</var> and <var>settingsObject</var>, with the <i>report only flag</i> set.
 
  <li><p>If the <a>cross-origin resource policy internal check</a> with <var>response</var>,
- <var>origin</var>, <var>embedderPolicy</var>'s value and <var>forNavigation</var> returns
+ <var>origin</var>, <var>embedderPolicy</var>'s value, and <var>forNavigation</var> returns
  <b>allowed</b>, then return <b>allowed</b>.
 
  <li><p><a>Queue a cross-origin embedder policy CORP violation report</a> with <var>response</var>
