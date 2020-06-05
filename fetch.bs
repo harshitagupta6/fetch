@@ -3150,11 +3150,11 @@ Cross-Origin-Resource-Policy     = %s"same-origin" / %s"same-site" / %s"cross-or
 
 <p>To perform a <dfn>cross-origin resource policy internal check</dfn>, given a
 <a for=/>response</a> <var>response</var>, an <a for=url>origin</a>, <var>origin</var>, an
-embedder policy value <var>embedder policy value</var> and a boolean
-<var>for navigation</var>, run these steps:
+embedder policy value <var>embedderPolicyValue</var> and a boolean
+<var>forNavigation</var>, run these steps:
 
 <ol>
- <li><p>If <var>for navigation</var> is true and <var>embedder policy value</var> is
+ <li><p>If <var>forNavigation</var> is true and <var>embedderPolicyValue</var> is
  "<code>unsafe-none</code>", then return <b>allowed</b>.
 
  <li>
@@ -3164,31 +3164,31 @@ embedder policy value <var>embedder policy value</var> and a boolean
 
   <p class=note>This means that `<code>Cross-Origin-Resource-Policy: same-site, same-origin</code>`
   ends up as <b>allowed</b> below as it will never match anything, as long as
-  <var>embedder policy value</var> is "<code>unsafe-none</code>". Two or more
+  <var>embedderPolicyValue</var> is "<code>unsafe-none</code>". Two or more
   `<a http-header><code>Cross-Origin-Resource-Policy</code></a>` headers will have the same effect.
 
- <li><p>If <var>policy</var> is neither "<code>same-origin</code>", "<code>same-site</code>" nor
- "<code>cross-origin</code>", then set <var>policy</var> to null.
+ <li><p>If <var>policy</var> is none of `<code>same-origin</code>`, `<code>same-site</code>` or
+ `<code>cross-origin</code>`, then set <var>policy</var> to null.
 
- <li><p>If <var>policy</var> is null and <var>embedder policy value</var> is
- "<code>require-corp</code>", then set <var>policy</var> to "<code>same-origin</code>".
+ <li><p>If <var>policy</var> is null and <var>embedderPolicyValue</var> is
+ "<code>require-corp</code>", then set <var>policy</var> to `<code>same-origin</code>`.
 
  <li>
   <p>Switch on <var>policy</var>:
 
   <dl class=switch>
    <dt>null
-   <dt>"<code>cross-origin</code>"
+   <dt>`<code>cross-origin</code>`
    <dd><p>Return <b>allowed</b>.
 
-   <dt>"<code>same-origin</code>"
+   <dt>`<code>same-origin</code>`
    <dd>
     <p>If <var>origin</var> is <a>same origin</a> with <var>response</var>'s <a for=response>URL</a>'s
     <a for=url>origin</a>, then return <b>allowed</b>.
 
     <p>Otherwise, return <b>blocked</b>.
 
-   <dt>"<code>same-site</code>"
+   <dt>`<code>same-site</code>`
    <dd>
     <p>If the following are true
 
@@ -3213,12 +3213,12 @@ embedder policy value <var>embedder policy value</var> and a boolean
 
 <p>To <dfn>queue a cross-origin embedder policy CORP violation report</dfn>, given a
 <a for=/>response</a> <var>response</var>, an <a for=/>environment settings object</a>
-<var>settings object</var> and a <i>for reporting flag</i>, run these steps:
+<var>settingsObject</var> and a <i>report only flag</i>, run these steps:
 
 <ol>
- <li><p>Let <var>endpoint</var> be <var>settings object</var>'s embedder policy's
- report only reporting endpoint if <i>for reporting flag</i> is set and
- <var>settings object</var>'s embedder policy's reporting endpoint otherwise.
+ <li><p>Let <var>endpoint</var> be <var>settingsObject</var>'s embedder policy's
+ report only reporting endpoint if <i>report only flag</i> is set and
+ <var>settingsObject</var>'s embedder policy's reporting endpoint otherwise.
 
  <li><p>Let <var>serialized url</var> be the result of
  <a lt="serialize a response URL for reporting">serializing a response URL for reporting</a> with
@@ -3245,14 +3245,14 @@ embedder policy value <var>embedder policy value</var> and a boolean
   </table>
 
  <li><p><a href="https://w3c.github.io/reporting/#queue-report">Queue</a> <var>body</var> as
- "<code>coep</code>" for <var>endpoint</var> on <var>settings object</var>.
+ "<code>coep</code>" for <var>endpoint</var> on <var>settingsObject</var>.
  [[!REPORTING]]
 </ol>
 
 
 <p>To perform a <dfn export>cross-origin resource policy check</dfn>, given a <a for=/>response</a>
 <var>response</var>, an <a for=url>origin</a> origin, an <a for=/>environment settings object</a>
-<var>settings object</var> and an optional <i>navigation flag</i>, run these steps:
+<var>settingsObject</var> and an optional <i>navigation flag</i>, run these steps:
 
 <p class="note no-backref">Only HTML's navigate algorithm uses this check with the
 <i>navigation flag</i> set, and it's always for nested navigations. Otherwise, <var>response</var>
@@ -3261,29 +3261,29 @@ a <a for=/>response</a> which will be the <a for=internal>internal response</a> 
 <a>opaque filtered response</a>. [[HTML]]
 
 <ol>
- <li><p>Let <var>embedder policy</var> be <var>settings object</var>'s embedder policy.
+ <li><p>Let <var>embedderPolicy</var> be <var>settingsObject</var>'s embedder policy.
 
- <li><p>Let <var>for navigation</var> be true if the <i>navigation flag</i> is set and false
+ <li><p>Let <var>forNavigation</var> be true if the <i>navigation flag</i> is set and false
  otherwise.
 
  <li>
   <p>If the <a>cross-origin resource policy internal check</a> with <var>response</var>,
-  <var>origin</var> and "<code>unsafe-none</code>" and <var>for navigation</var> returns
+  <var>origin</var> and "<code>unsafe-none</code>" and <var>forNavigation</var> returns
   <b>blocked</b>, then return <b>blocked</b>.
 
   <p class="note">This is to queue only COEP-related violation reports.
 
  <li><p>If the <a>cross-origin resource policy internal check</a> with <var>response</var>,
- <var>origin</var>, <var>embedder policy</var>'s report only value and <var>for navigation</var>
+ <var>origin</var>, <var>embedderPolicy</var>'s report only value and <var>forNavigation</var>
  returns <b>blocked</b>, then <a>queue a cross-origin embedder policy CORP violation report</a>
- with <var>response</var> and <var>settings object</var>, with the <i>for reporting flag</i> set.
+ with <var>response</var> and <var>settingsObject</var>, with the <i>report only flag</i> set.
 
  <li><p>If the <a>cross-origin resource policy internal check</a> with <var>response</var>,
- <var>origin</var>, <var>embedder policy</var>'s value and <var>for navigation</var> returns
+ <var>origin</var>, <var>embedderPolicy</var>'s value and <var>forNavigation</var> returns
  <b>allowed</b>, then return <b>allowed</b>.
 
  <li><p><a>Queue a cross-origin embedder policy CORP violation report</a> with <var>response</var>
- and <var>settings object</var>, with the <i>for reporting flag</i> unset.
+ and <var>settingsObject</var>, with the <i>report only flag</i> unset.
 
  <li><p>Return <b>blocked</b>.
 </ol>
