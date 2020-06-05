@@ -3267,7 +3267,7 @@ a <a for=/>response</a> which will be the <a for=internal>internal response</a> 
  otherwise.
 
  <li>
-  <p>If the <a>cross-origin resource policy internal check</a> with <var>origin</var>, 
+  <p>If the <a>cross-origin resource policy internal check</a> with <var>origin</var>,
   "<code>unsafe-none</code>", <var>response</var>, and <var>forNavigation</var> returns
   <b>blocked</b>, then return <b>blocked</b>.
 
