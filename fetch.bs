@@ -3217,7 +3217,7 @@ steps:
 
 <ol>
  <li><p>Let <var>endpoint</var> be <var>settingsObject</var>'s embedder policy's
- report only reporting endpoint if the <i>report only flag</i> is set and
+ report only reporting endpoint if the <var>reportOnly</var> is true and
  <var>settingsObject</var>'s embedder policy's reporting endpoint otherwise.
 
  <li><p>Let <var>serialized url</var> be the result of
@@ -3251,20 +3251,14 @@ steps:
 
 
 <p>To perform a <dfn export>cross-origin resource policy check</dfn>, given an <a for=url>origin</a>
-origin, an <a for=/>environment settings object</a> <var>settingsObject</var>, a
-<a for=/>response</a> <var>response</var>, and an optional boolean <var>forNavigation</var>, run these steps:
-
-<p class="note no-backref">Only HTML's navigate algorithm uses this check with the
-<i>navigation flag</i> set, and it's always for nested navigations. Otherwise, <var>response</var>
-is either the <a for=internal>internal response</a> of an <a>opaque filtered response</a> or
-a <a for=/>response</a> which will be the <a for=internal>internal response</a> of an
-<a>opaque filtered response</a>. [[HTML]]
+<var>origin</var>, an <a for=/>environment settings object</a> <var>settingsObject</var>, a
+<a for=/>response</a> <var>response</var>, and an optional boolean <var>forNavigation</var>, run
+these steps:
 
 <ol>
- <li><p>Let <var>embedderPolicy</var> be <var>settingsObject</var>'s embedder policy.
+ <li><p>Set <var>forNavigation</var> to false if it is not given.
 
- <li><p>Let <var>forNavigation</var> be true if the <i>navigation flag</i> is set and false
- otherwise.
+ <li><p>Let <var>embedderPolicy</var> be <var>settingsObject</var>'s embedder policy.
 
  <li>
   <p>If the <a>cross-origin resource policy internal check</a> with <var>origin</var>,
@@ -3276,17 +3270,24 @@ a <a for=/>response</a> which will be the <a for=internal>internal response</a> 
  <li><p>If the <a>cross-origin resource policy internal check</a> with <var>origin</var>,
  <var>embedderPolicy</var>'s report only value, <var>response</var>, and <var>forNavigation</var>
  returns <b>blocked</b>, then <a>queue a cross-origin embedder policy CORP violation report</a>
- with <var>response</var> and <var>settingsObject</var>, with the <i>report only flag</i> set.
+ with <var>response</var>, <var>settingsObject</var>, and true.
 
  <li><p>If the <a>cross-origin resource policy internal check</a> with <var>origin</var>,
  <var>embedderPolicy</var>'s value, <var>response</var>, and <var>forNavigation</var> returns
  <b>allowed</b>, then return <b>allowed</b>.
 
- <li><p><a>Queue a cross-origin embedder policy CORP violation report</a> with <var>response</var>
- and <var>settingsObject</var>, with the <i>report only flag</i> unset.
+ <li><p><a>Queue a cross-origin embedder policy CORP violation report</a> with <var>response</var>,
+ <var>settingsObject</var>, and false.
 
  <li><p>Return <b>blocked</b>.
 </ol>
+
+<p class="note no-backref">Only HTML's navigate algorithm uses this check with
+<var>forNavigation</var> set to true, and it's always for nested navigations. Otherwise,
+<var>response</var> is either the <a for=internal>internal response</a> of an
+<a>opaque filtered response</a> or a <a for=/>response</a> which will be the
+<a for=internal>internal response</a> of an
+<a>opaque filtered response</a>. [[HTML]]
 
 <h2 id=fetching>Fetching</h2>
 
