@@ -3213,7 +3213,7 @@ steps:
 
 <p>To <dfn>queue a cross-origin embedder policy CORP violation report</dfn>, given a
 <a for=/>response</a> <var>response</var>, an <a for=/>environment settings object</a>
-<var>settingsObject</var>, and a <i>report only flag</i>, run these steps:
+<var>settingsObject</var>, and a boolean <var>reportOnly</var>, run these steps:
 
 <ol>
  <li><p>Let <var>endpoint</var> be <var>settingsObject</var>'s embedder policy's
