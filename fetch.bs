@@ -3252,7 +3252,7 @@ steps:
 
 <p>To perform a <dfn export>cross-origin resource policy check</dfn>, given an <a for=url>origin</a>
 origin, an <a for=/>environment settings object</a> <var>settingsObject</var>, a
-<a for=/>response</a> <var>response</var>, and an optional <i>navigation flag</i>, run these steps:
+<a for=/>response</a> <var>response</var>, and an optional boolean <var>forNavigation</var>, run these steps:
 
 <p class="note no-backref">Only HTML's navigate algorithm uses this check with the
 <i>navigation flag</i> set, and it's always for nested navigations. Otherwise, <var>response</var>
