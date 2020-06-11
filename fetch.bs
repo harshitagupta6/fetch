@@ -3245,7 +3245,8 @@ steps:
   </table>
 
  <li><p><a href="https://w3c.github.io/reporting/#queue-report">Queue</a> <var>body</var> as
- "<code>coep</code>" for <var>endpoint</var> on <var>settingsObject</var>.
+ the "<code>coep</code>"report type for <var>endpoint</var> on
+ <var>settingsObject</var>.
  [[!REPORTING]]
 </ol>
 
