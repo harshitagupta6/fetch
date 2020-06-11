@@ -3244,10 +3244,8 @@ steps:
    </tbody>
   </table>
 
- <li><p><a href="https://w3c.github.io/reporting/#queue-report">Queue</a> <var>body</var> as
- the "<code>coep</code>"report type for <var>endpoint</var> on
- <var>settingsObject</var>.
- [[!REPORTING]]
+ <li><p><a for="reporting">Queue</a> <var>body</var> as the "<code>coep</code>"report type for
+ <var>endpoint</var> on <var>settingsObject</var>. [[!REPORTING]]
 </ol>
 
 <p>To perform a <dfn export>cross-origin resource policy check</dfn>, given an <a for=url>origin</a>
