@@ -1753,7 +1753,7 @@ source of security bugs. Please seek security review for features that deal with
 <var>response</var>, run these steps:
 
 <ol>
- <li><p>Assert: <var>response</var>'s <a for=response>URL list</a> is not empty.
+ <li><p>Assert: <var>response</var>'s <a for=response>URL list</a> <a for=list>is not empty</a>.
 
  <li>
   <p>Let <var>url</var> be a copy of <var>response</var>'s <a for=response>URL list</a>'s first
@@ -3249,7 +3249,6 @@ steps:
  [[!REPORTING]]
 </ol>
 
-
 <p>To perform a <dfn export>cross-origin resource policy check</dfn>, given an <a for=url>origin</a>
 <var>origin</var>, an <a for=/>environment settings object</a> <var>settingsObject</var>, a
 <a for=/>response</a> <var>response</var>, and an optional boolean <var>forNavigation</var>, run
@@ -3265,7 +3264,7 @@ these steps:
   "<code>unsafe-none</code>", <var>response</var>, and <var>forNavigation</var> returns
   <b>blocked</b>, then return <b>blocked</b>.
 
-  <p class="note">This is to queue only COEP-related violation reports.
+  <p class="note">This is to queue only Cross-Origin Embedder Policy violation reports.
 
  <li><p>If the <a>cross-origin resource policy internal check</a> with <var>origin</var>,
  <var>embedderPolicy</var>'s report only value, <var>response</var>, and <var>forNavigation</var>
@@ -3288,6 +3287,7 @@ these steps:
 <a>opaque filtered response</a> or a <a for=/>response</a> which will be the
 <a for=internal>internal response</a> of an
 <a>opaque filtered response</a>. [[HTML]]
+
 
 <h2 id=fetching>Fetching</h2>
 
