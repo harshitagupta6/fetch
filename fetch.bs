@@ -3244,7 +3244,7 @@ steps:
    </tbody>
   </table>
 
- <li><p><a for="reporting">Queue</a> <var>body</var> as the "<code>coep</code>"report type for
+ <li><p><a for="reporting">Queue</a> <var>body</var> as the "<code>coep</code>" report type for
  <var>endpoint</var> on <var>settingsObject</var>. [[!REPORTING]]
 </ol>
 
