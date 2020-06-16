@@ -3285,7 +3285,7 @@ these steps:
 <p class="note no-backref">Only HTML's navigate algorithm uses this check with
 <var>forNavigation</var> set to true, and it's always for nested navigations. Otherwise,
 <var>response</var> is either the <a for=internal>internal response</a> of an
-<a>opaque filtered response</a> or a <a for=/>response</a> which will be the
+<a>opaque filtered response</a>, or a <a for=/>response</a> which will be the
 <a for=internal>internal response</a> of an
 <a>opaque filtered response</a>. [[HTML]]
 
